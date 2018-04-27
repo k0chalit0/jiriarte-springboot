@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 public class JiriarteSpringbootApplication {
 
-	@RequestMapping("/")
+	@RequestMapping("/")  //GET by Default
 	String home() {
 		return "Hello World!";
 	}
