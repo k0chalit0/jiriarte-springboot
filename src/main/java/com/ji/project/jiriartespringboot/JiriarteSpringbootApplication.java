@@ -8,24 +8,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 
 public class JiriarteSpringbootApplication {
-
-	@RequestMapping("/")  //GET by Default
-	String home() {
-		return "Hello World!";
-	}
-
-	@RequestMapping("/hello")
-	String hello(){
-		return "Hello!!";
-	}
-
-	@RequestMapping(value = "/hello/{name}", method = RequestMethod.GET)
-	@ResponseBody
-	public String getNameBySimplePathWithPathVariable(
-			@PathVariable("name") String name) {
-		return "Hello " + name + "!!!";
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(JiriarteSpringbootApplication.class, args);
 	}
