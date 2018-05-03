@@ -1,18 +1,30 @@
 package com.ji.project.jiriartespringboot.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Teacher {
-    private long id;
+    @Id
+    private String id;
+    private  long ci;
     private  String name;
-    public Teacher(long id, String name){
-        this.id = id;
+
+    // fix error adding default constructor
+    public Teacher(){
+
+    }
+    public Teacher(long ci, String name) {
+        this.ci = ci;
         this.name = name;
     }
-    public long getId() {
-        return id;
+
+    public long getCi() {
+        return ci;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setCi(long ci) {
+        this.ci = ci;
     }
 
     public String getName() {
@@ -22,4 +34,13 @@ public class Teacher {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
+

@@ -11,41 +11,43 @@ import java.util.List;
 @RestController
 @RequestMapping("/teachers")
 @Api(value="onlinestore", description="Operations pertaining a Teachers Service")
-public class TeacherController {
 
+public class TeacherController {
+    // dependency Injection
     @Autowired
     private TeacherService teacherService;
-
+    // Get all teachers
     @RequestMapping(method = RequestMethod.GET)
-    public List<Teacher> getTeachers(){
+    public List<Teacher> getAllTeachers(){
         return teacherService.getAllTeachers();
     }
 
-    //add Teacher
+    @RequestMapping(path="/{id}",method = RequestMethod.GET)
+    public Teacher getTeacherById(@PathVariable String id){
+        return teacherService.getTeacherById(id);
+        //return teacherService.getTeacherById(id);
+    }
+    // insert new Teacher
     @RequestMapping(method = RequestMethod.POST)
     public void addNewTeacher(@RequestBody Teacher newTeacher){
         System.out.println("the Name of new Teacher is "+newTeacher.getName());
         teacherService.addNewTeacher(newTeacher);
     }
-
-    //get Teacher
-    @RequestMapping(path="/{id}", method = RequestMethod.GET)
-    public Teacher getTeacherById(@PathVariable int id){
-        return teacherService.getTeacherById(id);
-    }
-
-    //delete Teacher
-    @RequestMapping(path="/{id}", method = RequestMethod.DELETE)
-    public void deleteTeacher(@PathVariable int id){
-        System.out.println("the Id delete is "+ id);
+    // delete Teacher : localhost:9090/teacher/2
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public void deleteTeacher(@PathVariable String id){
+        System.out.println("the Id delete is " + id);
         teacherService.deleteTeacher(id);
+        //teacherService.deleteTeacher(id);
     }
 
-    //delete Teacher by Object
-    @RequestMapping( method = RequestMethod.DELETE)
-    public void deleteTeacherByObject(@RequestBody Teacher delTeacher){
-        System.out.println("the Teacher delete is "+ delTeacher.getName());
-        teacherService.deleteTeacher( (int) delTeacher.getId() );
+    // delete Teacher by Id using Request Body
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void deleteTeacherByRequ(@RequestBody Teacher teacher){
+        System.out.println("the id of teacher to delete is "+ teacher.getCi());
+        teacherService.deleteTeacher(teacher.getId());
+        //teacherService.deleteTeacher((int)teacher.getCi());
     }
+
 }
 
