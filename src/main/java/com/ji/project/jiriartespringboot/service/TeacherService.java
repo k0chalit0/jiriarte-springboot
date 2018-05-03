@@ -63,4 +63,12 @@ package com.ji.project.jiriartespringboot.service;
             return teacherRepository.findOneById(id);
         }
 
+        public Teacher updateTeacherById(String id, Teacher teacherDetails){
+            Teacher teacher = teacherRepository.findOneById(id);
+            teacher.setName((teacherDetails.getName() == null || teacherDetails.getName().isEmpty() ) ? teacher.getName() : teacherDetails.getName());
+            teacher.setCi( teacherDetails.getCi() == 0 ? teacher.getCi() : teacherDetails.getCi() );
+
+            Teacher updatedTeacher = teacherRepository.save(teacher);
+            return updatedTeacher;
+        }
     }

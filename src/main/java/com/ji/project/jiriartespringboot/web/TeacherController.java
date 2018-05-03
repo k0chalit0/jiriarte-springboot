@@ -49,5 +49,9 @@ public class TeacherController {
         //teacherService.deleteTeacher((int)teacher.getCi());
     }
 
+    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
+    public Teacher updateTeacherById(@PathVariable String id, @RequestBody Teacher teacher){
+        return teacherService.updateTeacherById(id, teacher);
+    }
 }
 

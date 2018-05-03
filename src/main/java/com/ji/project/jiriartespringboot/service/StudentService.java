@@ -33,4 +33,14 @@ public class StudentService {
         return studentRepository.findOneById(id);
     }
 
+    public Student updateStudentById(String id, Student studentDetails){
+        Student student = studentRepository.findOneById(id);
+        student.setFirstName((studentDetails.getFirstName() == null || studentDetails.getFirstName().isEmpty() ) ? student.getFirstName() : studentDetails.getFirstName());
+        student.setLastName(studentDetails.getLastName() == null || studentDetails.getLastName().isEmpty() ? student.getLastName() : studentDetails.getLastName() );
+        student.setCi( studentDetails.getCi() == 0 ? student.getCi() : studentDetails.getCi() );
+
+        Student updatedStudent = studentRepository.save(student);
+        return updatedStudent;
+    }
+
 }
