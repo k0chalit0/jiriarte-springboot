@@ -8,17 +8,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Student {
     //@Transient
     @Id
+    @Transient
     private String id;
     private long ci;
     private String firstName;
     private String lastName;
+    private int age;
 
     public Student(){};
 
-    public Student(long ci, String firstName, String lastName){
+    public Student(long ci, String firstName, String lastName, int age){
         this.ci = ci;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.age = age;
     }
 
     public String getId() {
@@ -55,5 +58,13 @@ public class Student {
 
     public String getFullName(){
         return this.firstName + " " + this.lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

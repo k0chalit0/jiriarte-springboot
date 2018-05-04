@@ -14,14 +14,6 @@ package com.ji.project.jiriartespringboot.service;
         @Autowired
         private TeacherRepository teacherRepository;
 
-        public TeacherService(){
-
-            listTeacher.add(new Teacher(0,"Rudy"));
-            listTeacher.add(new Teacher(1,"Carlitos"));
-            listTeacher.add(new Teacher(2,"Jorgito"));
-            listTeacher.add(new Teacher(3,"Noemi"));
-        }
-
         // CRUD
         // List Teachers
         public List<Teacher> getAllTeachers(){

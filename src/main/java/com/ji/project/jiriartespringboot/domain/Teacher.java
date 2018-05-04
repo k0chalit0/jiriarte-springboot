@@ -8,17 +8,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Teacher {
     //@Transient // Evita que se persista el field / atributo id en base de datos
     @Id
+    @Transient
     private String id;
     private  long ci;
     private  String name;
+    private int age;
 
     // fix error adding default constructor
     public Teacher(){
 
     }
-    public Teacher(long ci, String name) {
+    public Teacher(long ci, String name, int age) {
         this.ci = ci;
         this.name = name;
+        this.age = age;
     }
 
     public long getCi() {
@@ -43,6 +46,14 @@ public class Teacher {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }
 
