@@ -1,10 +1,12 @@
 package com.ji.project.jiriartespringboot.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Teacher {
+    //@Transient // Evita que se persista el field / atributo id en base de datos
     @Id
     private String id;
     private  long ci;
