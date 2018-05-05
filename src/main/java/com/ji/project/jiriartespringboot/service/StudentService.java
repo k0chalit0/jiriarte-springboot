@@ -28,7 +28,11 @@ public class StudentService {
     public void deleteStudent(String id){
         studentRepository.deleteById(id);
     }
-
+/*
+    public void deleteStudentByCodsis(long codsis){
+        studentRepository.deleteByCodsis(codsis);
+    }
+*/
     public Student getStudentById(String id){
         return studentRepository.findOneById(id);
     }
@@ -43,4 +47,7 @@ public class StudentService {
         return updatedStudent;
     }
 
+    public void updateStudent ( Student updateStudent){
+        studentRepository.save(updateStudent);
+    }
 }

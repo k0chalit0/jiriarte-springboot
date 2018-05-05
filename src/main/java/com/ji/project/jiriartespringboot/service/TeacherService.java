@@ -37,9 +37,15 @@ package com.ji.project.jiriartespringboot.service;
             listTeacher.remove(id);
         }
 
-        public void deleteTeacher(String id){
+        public void deleteTeacherById(String id){
             // delete a teacher by id in DB
             teacherRepository.deleteById(id);
+            //listTeacher.remove(id);
+        }
+
+        public void deleteTeacher(Teacher deleteTeacher){
+            // delete a teacher by id in DB
+            teacherRepository.delete(deleteTeacher);
             //listTeacher.remove(id);
         }
 
@@ -62,5 +68,10 @@ package com.ji.project.jiriartespringboot.service;
 
             Teacher updatedTeacher = teacherRepository.save(teacher);
             return updatedTeacher;
+        }
+
+        public void updateTeacher(Teacher updateTeacher)
+        {
+            teacherRepository.save(updateTeacher);
         }
     }

@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Teacher {
     //@Transient // Evita que se persista el field / atributo id en base de datos
     @Id
-    @Transient
+    //@Transient
     private String id;
     private  long ci;
     private  String name;

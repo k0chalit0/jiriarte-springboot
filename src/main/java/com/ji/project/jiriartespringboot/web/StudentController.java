@@ -42,11 +42,21 @@ public class StudentController {
         System.out.println("the id of student to delete is "+ student.getCi());
         studentService.deleteStudent(student.getId());
     }
+/*
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void deleteStudentsByCodSis(@RequestBody Student student){
+        System.out.println("the id of student to delete is "+ student.getCodsis());
+        studentService.deleteStudentByCodsis(student.getCodsis());
+    }*/
 
     @RequestMapping(path="/{id}", method = RequestMethod.PUT)
     public Student updateStudentById(@PathVariable String id, @RequestBody Student student){
         return studentService.updateStudentById(id, student);
     }
 
+    @RequestMapping( method = RequestMethod.PATCH)
+    public void updateStudent(@RequestBody Student studentUpdate){
+        studentService.updateStudent(studentUpdate);
+    }
 }
 

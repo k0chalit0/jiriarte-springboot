@@ -37,15 +37,15 @@ public class TeacherController {
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public void deleteTeacher(@PathVariable String id){
         System.out.println("the Id delete is " + id);
-        teacherService.deleteTeacher(id);
+        teacherService.deleteTeacherById(id);
         //teacherService.deleteTeacher(id);
     }
 
     // delete Teacher by Id using Request Body
     @RequestMapping(method = RequestMethod.DELETE)
-    public void deleteTeacherByRequ(@RequestBody Teacher teacher){
+    public void deleteTeacherByRequest(@RequestBody Teacher teacher){
         System.out.println("the id of teacher to delete is "+ teacher.getCi());
-        teacherService.deleteTeacher(teacher.getId());
+        teacherService.deleteTeacher(teacher);
         //teacherService.deleteTeacher((int)teacher.getCi());
     }
 
@@ -53,5 +53,11 @@ public class TeacherController {
     public Teacher updateTeacherById(@PathVariable String id, @RequestBody Teacher teacher){
         return teacherService.updateTeacherById(id, teacher);
     }
+
+    @RequestMapping( method = RequestMethod.PATCH)
+    public void updateTeacher(@RequestBody Teacher teacherUpdate){
+        teacherService.updateTeacher(teacherUpdate);
+    }
+
 }
 
